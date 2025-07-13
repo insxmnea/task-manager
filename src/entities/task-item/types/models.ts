@@ -17,3 +17,9 @@ export interface Task {
 }
 
 export type TaskFormValues = Omit<Task, "id">;
+
+export type TaskFilters = {
+  statuses: TaskStatus[];
+  categories: TaskCategory[];
+  priorities: TaskPriority[];
+};

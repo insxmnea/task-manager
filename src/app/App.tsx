@@ -4,7 +4,6 @@ import { TaskProvider } from "src/entities/task-item";
 import { Header } from "src/widgets/header";
 import "@mantine/core/styles.css";
 import "./globals.css";
-import { Footer } from "src/widgets/footer";
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
         <TaskProvider>
           <Header />
           <AppRouter />
-          <Footer />
         </TaskProvider>
       </MantineProvider>
     </>

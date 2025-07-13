@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from "react";
-import type { Task, TaskFormValues } from "../types/models";
+import { useMemo, useState, type ReactNode } from "react";
+import type { Task, TaskFilters, TaskFormValues } from "../types/models";
 import { TaskContext } from "./TaskContext";
 
 export const TaskProvider = ({ children }: { children: ReactNode }) => {
@@ -86,7 +86,43 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     },
   ]);
 
+  const [filters, setFilters] = useState<TaskFilters>({
+    statuses: [],
+    categories: [],
+    priorities: [],
+  });
+
   const getTask = (id: string) => tasks.find((task) => task.id === id);
+
+  const filteredTasks = useMemo(() => {
+    return tasks.filter((task) => {
+      // Фильтрация по статусу
+      if (
+        filters.statuses.length > 0 &&
+        !filters.statuses.includes(task.status)
+      ) {
+        return false;
+      }
+
+      // Фильтрация по категории
+      if (
+        filters.categories.length > 0 &&
+        !filters.categories.includes(task.category)
+      ) {
+        return false;
+      }
+
+      // Фильтрация по приоритету
+      if (
+        filters.priorities.length > 0 &&
+        !filters.priorities.includes(task.priority)
+      ) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [tasks, filters]);
 
   const updateTask = (id: string, values: TaskFormValues) => {
     setTasks((prev) =>
@@ -99,7 +135,17 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, getTask, updateTask, addTask }}>
+    <TaskContext.Provider
+      value={{
+        tasks,
+        getTask,
+        filteredTasks,
+        filters,
+        setFilters,
+        updateTask,
+        addTask,
+      }}
+    >
       {children}
     </TaskContext.Provider>
   );
