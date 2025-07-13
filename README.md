@@ -1,69 +1,102 @@
-# React + TypeScript + Vite
+# Менеджер задач - React приложение
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание проекта
 
-Currently, two official plugins are available:
+Веб-приложение для управления задачами, разработанное с использованием React и TypeScript. Приложение позволяет:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Просматривать список задач в виде адаптивных карточек
+- Редактировать задачи с возможностью изменения заголовка, описания, категории, статуса и приоритета
+- Фильтровать задачи по статусу, категории и приоритету
+- Управлять задачами через интуитивно понятный интерфейс
 
-## Expanding the ESLint configuration
+Приложение полностью адаптировано для работы на различных устройствах (desktop/tablet/mobile) и поддерживает все современные браузеры.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Демонстрация
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+[Посмотреть работающее приложение](https://insxmnea.github.io/task-manager/)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Технологии
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React (v19.1.0) - основная библиотека для построения UI
+- TypeScript - язык программирования для статической типизации
+- Vite - быстрый сборщик проекта
+- Mantine (v8.1.3) - UI-фреймворк с готовыми компонентами
+- React Router (v6) - для маршрутизации в SPA
+- CSS Modules - для изоляции стилей компонентов
+- React Context API - для управления состоянием приложения
+
+## Функциональные возможности
+
+- 📋 Просмотр списка задач в виде адаптивных карточек
+- ✏️ Редактирование задач на отдельной странице
+- 🏷️ Фильтрация задач по категории, статусу и приоритету
+- 📱 Полностью адаптивный интерфейс
+- 🔄 Сохранение состояния приложения между сессиями
+
+## Установка и запуск
+
+### Предварительные требования
+
+Убедитесь, что у вас установлен:
+
+- Node.js (версия 18.0 или выше)
+- npm (версия 9.0 или выше)
+
+### Инструкция по установке
+
+1. Клонируйте репозиторий:
+
+```bash
+git clone https://github.com/insxmnea/task-manager.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Перейдите в папку проекта:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd task-manager
 ```
+
+3. Установите зависимости:
+
+```bash
+npm install
+```
+
+### Запуск приложения
+
+#### Для запуска в режиме разработки:
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу: `http://localhost:5173`
+
+#### Сборка для production
+
+Для создания production-сборки:
+
+```bash
+npm run build
+```
+
+Собранные файлы будут размещены в папке `dist/`.
+
+#### Деплой на GitHub Pages
+
+Для публикации приложения на GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+Приложение будет доступно по адресу: `https://gitname.github.io/task-manager`
+
+### Скрипты
+
+- `dev` - запуск сервера разработки
+- `build` - сборка проекта для production
+- `lint` - проверка с помощью ESLint
+- `preview` - предпросмотр production-сборки
+- `predeploy` - сборка проекта перед деплоем
+- `deploy` - публикация проекта на GitHub Pages
