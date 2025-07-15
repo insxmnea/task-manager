@@ -1,8 +1,8 @@
 import type { FC } from "react";
 import { Link } from "react-router-dom";
-import { ROUTES } from "src/app/router";
 import styles from "./Header.module.css";
 import { Box, Group } from "@mantine/core";
+import { ROUTES } from "@app/router";
 
 export const Header: FC = () => {
   return (

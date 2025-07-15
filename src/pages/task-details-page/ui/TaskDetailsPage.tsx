@@ -1,3 +1,5 @@
+import { ROUTES } from "@app/router";
+import { useTaskContext, type TaskFormValues } from "@entities/task-item";
 import {
   Button,
   Container,
@@ -10,8 +12,6 @@ import {
 import { useForm } from "@mantine/form";
 import type { FC } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ROUTES } from "src/app/router";
-import { useTaskContext, type TaskFormValues } from "src/entities/task-item";
 
 export const TaskDetailsPage: FC = () => {
   const { id } = useParams<{ id: string }>();

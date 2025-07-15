@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, Text, Group, Badge, Button } from "@mantine/core";
 import { Link } from "react-router-dom";
-import type { Task } from "src/entities/task-item";
-import { ROUTES } from "src/app/router";
+import type { Task } from "@entities/task-item";
+import { ROUTES } from "@app/router";
 
 const categoryColors = {
   Bug: "red",

@@ -1,11 +1,11 @@
-import { Button, Group, MultiSelect } from "@mantine/core";
-import { type FC } from "react";
 import {
   useTaskContext,
   type TaskCategory,
   type TaskPriority,
   type TaskStatus,
-} from "src/entities/task-item";
+} from "@entities/task-item";
+import { Button, Group, MultiSelect } from "@mantine/core";
+import { type FC } from "react";
 
 const statusOptions = [
   { value: "To Do", label: "To Do" },
