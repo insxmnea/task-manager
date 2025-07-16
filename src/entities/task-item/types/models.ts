@@ -17,7 +17,7 @@ export interface Task {
   dateOfCreation: Date;
 }
 
-export type TaskFormValues = Omit<Task, "id">;
+export type TaskFormValues = Omit<Task, "id" | "dateOfCreation">;
 
 export type TaskFilters = {
   statuses: TaskStatus[];
