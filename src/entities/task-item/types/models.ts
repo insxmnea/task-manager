@@ -23,3 +23,15 @@ export type TaskFilters = {
   categories: TaskCategory[];
   priorities: TaskPriority[];
 };
+
+export type FilterType = keyof TaskFilters;
+
+export interface TaskState {
+  tasks: Task[];
+  addTask: (task: Task) => void;
+  getTask: (id: string) => Task | undefined;
+  updateTask: (id: string, values: TaskFormValues) => void;
+  filters: TaskFilters;
+  setFilters: <T extends FilterType>(values: TaskFilters[T], type: T) => void;
+  resetFilters: () => void;
+}

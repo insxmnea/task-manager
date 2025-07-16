@@ -1,8 +1,7 @@
-import type { FC } from "react";
 import styles from "./Footer.module.css";
 import { ActionIcon, Group } from "@mantine/core";
 
-export const Footer: FC = () => {
+export const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.inner}>

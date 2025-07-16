@@ -1,11 +1,10 @@
 import {
-  useTaskContext,
+  useTasksStore,
   type TaskCategory,
   type TaskPriority,
   type TaskStatus,
 } from "@entities/task-item";
 import { Button, Group, MultiSelect } from "@mantine/core";
-import { type FC } from "react";
 
 const statusOptions = [
   { value: "To Do", label: "To Do" },
@@ -27,33 +26,27 @@ const priorityOptions = [
   { value: "High", label: "High" },
 ];
 
-export const Filters: FC = () => {
-  const { filters, setFilters } = useTaskContext();
+export const Filters = () => {
+  const filters = useTasksStore((state) => state.filters);
+  const setFilters = useTasksStore((state) => state.setFilters);
+  const resetFilters = useTasksStore((state) => state.resetFilters);
 
   const handleStatusChange = (values: string[]) => {
-    setFilters({ ...filters, statuses: values as TaskStatus[] });
+    setFilters(values as TaskStatus[], "statuses");
   };
 
   const handleCategoryChange = (values: string[]) => {
-    setFilters({ ...filters, categories: values as TaskCategory[] });
+    setFilters(values as TaskCategory[], "categories");
   };
 
   const handlePriorityChange = (values: string[]) => {
-    setFilters({ ...filters, priorities: values as TaskPriority[] });
-  };
-
-  const resetFilters = () => {
-    setFilters({
-      statuses: [],
-      categories: [],
-      priorities: [],
-    });
+    setFilters(values as TaskPriority[], "priorities");
   };
 
   return (
     <Group mb="xl">
       <MultiSelect
-        label="Статус"
+        placeholder="Статус"
         data={statusOptions}
         value={filters.statuses}
         onChange={handleStatusChange}
@@ -61,7 +54,7 @@ export const Filters: FC = () => {
         comboboxProps={{ width: 200, position: "bottom-start" }}
       />
       <MultiSelect
-        label="Категория"
+        placeholder="Категория"
         data={categoryOptions}
         value={filters.categories}
         onChange={handleCategoryChange}
@@ -69,7 +62,7 @@ export const Filters: FC = () => {
         comboboxProps={{ width: 200, position: "bottom-start" }}
       />
       <MultiSelect
-        label="Приоритет"
+        placeholder="Приоритет"
         data={priorityOptions}
         value={filters.priorities}
         onChange={handlePriorityChange}

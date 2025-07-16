@@ -1,6 +1,5 @@
 import { TaskList } from "@widgets/task-list";
-import type { FC } from "react";
 
-export const HomePage: FC = () => {
+export const HomePage = () => {
   return <TaskList />;
 };

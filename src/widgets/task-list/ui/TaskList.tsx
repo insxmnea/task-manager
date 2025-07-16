@@ -1,11 +1,31 @@
-import { useMemo, type FC } from "react";
+import { useMemo } from "react";
 import { SimpleGrid, Title, Container, Text } from "@mantine/core";
 import { TaskItem } from "@widgets/task-item";
 import { Filters } from "@widgets/filters";
-import { useTaskContext } from "@entities/task-item";
+import { useTasksStore } from "@entities/task-item";
 
-export const TaskList: FC = () => {
-  const { filteredTasks } = useTaskContext();
+export const TaskList = () => {
+  const tasks = useTasksStore((state) => state.tasks);
+  const filters = useTasksStore((state) => state.filters);
+
+  const filteredTasks = tasks.filter((task) => {
+    const statuses = filters.statuses;
+    if (statuses.length > 0 && !statuses.includes(task.status)) {
+      return false;
+    }
+
+    const categories = filters.categories;
+    if (categories.length > 0 && !categories.includes(task.category)) {
+      return false;
+    }
+
+    const priorities = filters.priorities;
+    if (priorities.length > 0 && !priorities.includes(task.priority)) {
+      return false;
+    }
+
+    return true;
+  });
 
   const tasksGrid = useMemo(
     () => (

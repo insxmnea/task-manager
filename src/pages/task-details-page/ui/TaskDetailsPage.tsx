@@ -1,5 +1,5 @@
 import { ROUTES } from "@app/router";
-import { useTaskContext, type TaskFormValues } from "@entities/task-item";
+import { useTasksStore, type TaskFormValues } from "@entities/task-item";
 import {
   Button,
   Container,
@@ -10,13 +10,14 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import type { FC } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const TaskDetailsPage: FC = () => {
+export const TaskDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { getTask, updateTask } = useTaskContext();
+
+  const getTask = useTasksStore((state) => state.getTask);
+  const updateTask = useTasksStore((state) => state.updateTask);
 
   const task = getTask(id as string);
 
