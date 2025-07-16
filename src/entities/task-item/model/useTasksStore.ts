@@ -104,8 +104,16 @@ export const useTasksStore = create<TaskState>()(
         }));
       },
 
-      addTask: (task) => {
-        set((state) => ({ tasks: [...state.tasks, task] }));
+      createTask: (task) => {
+        set((state) => ({
+          tasks: [
+            ...state.tasks,
+            {
+              ...task,
+              id: String(Number(state.tasks[state.tasks.length - 1].id) + 1),
+            },
+          ],
+        }));
       },
 
       deleteTask: (id) => {

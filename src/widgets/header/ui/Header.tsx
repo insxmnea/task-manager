@@ -11,6 +11,10 @@ export const Header = () => {
           <Link to={ROUTES.HOMEPAGE} className={styles.link}>
             Список задач
           </Link>
+
+          <Link to={ROUTES.CREATETASKPAGE} className={styles.link}>
+            Добавить задачу
+          </Link>
         </Group>
       </header>
     </Box>

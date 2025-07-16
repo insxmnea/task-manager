@@ -8,7 +8,7 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route path={ROUTES.HOMEPAGE} element={<HomePage />} />
-      <Route path={ROUTES.NEWTASKPAGE} element={<CreateTaskPage />} />
+      <Route path={ROUTES.CREATETASKPAGE} element={<CreateTaskPage />} />
       <Route
         path={ROUTES.TASKDETAILSPAGE + "/:id"}
         element={<TaskDetailsPage />}
