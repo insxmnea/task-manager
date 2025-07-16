@@ -14,6 +14,7 @@ export interface Task {
   category: TaskCategory;
   status: TaskStatus;
   priority: TaskPriority;
+  dateOfCreation: Date;
 }
 
 export type TaskFormValues = Omit<Task, "id">;

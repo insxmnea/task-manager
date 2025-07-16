@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useTasksStore, type Task } from "@entities/task-item";
 import { ROUTES } from "@app/router";
 import styles from "./TaskItem.module.css";
+import { TaskCreationDate } from "@shared/ui/task-creation-date";
 
 const categoryColors = {
   Bug: "red",
@@ -19,7 +20,11 @@ const priorityColors = {
   Low: "green",
 };
 
-export const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
+interface Props {
+  task: Task;
+}
+
+export const TaskItem = ({ task }: Props) => {
   const deleteTask = useTasksStore((state) => state.deleteTask);
 
   const handleDeleteTask = (
@@ -39,6 +44,8 @@ export const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
       radius="md"
       withBorder
     >
+      <TaskCreationDate dateOfCreation={task.dateOfCreation} />
+
       <Text size="lg" mb="xs">
         {task.title}
       </Text>

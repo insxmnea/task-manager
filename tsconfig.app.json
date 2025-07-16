@@ -21,8 +21,8 @@
       "@app/*": ["./src/app/*"],
       "@pages/*": ["./src/pages/*"],
       "@widgets/*": ["./src/widgets/*"],
-      "@entities/*": ["./src/entities/*"]
-      // "src/*": ["./src/*"]
+      "@entities/*": ["./src/entities/*"],
+      "@shared/*": ["./src/shared/*"]
     },
 
     /* Linting */
