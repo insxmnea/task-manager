@@ -3,6 +3,7 @@ import { Card, Text, Group, Badge, Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { useTasksStore, type Task } from "@entities/task-item";
 import { ROUTES } from "@app/router";
+import styles from "./TaskItem.module.css";
 
 const categoryColors = {
   Bug: "red",
@@ -21,12 +22,23 @@ const priorityColors = {
 export const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
   const deleteTask = useTasksStore((state) => state.deleteTask);
 
-  const handleDeleteTask = () => {
+  const handleDeleteTask = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
     deleteTask(task.id);
   };
 
   return (
-    <Card shadow="sm" p="lg" radius="md" withBorder>
+    <Card
+      component={Link}
+      to={`${ROUTES.TASKDETAILSPAGE}/${task.id}`}
+      className={styles.card}
+      shadow="sm"
+      p="lg"
+      radius="md"
+      withBorder
+    >
       <Text size="lg" mb="xs">
         {task.title}
       </Text>
@@ -46,18 +58,7 @@ export const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
       </Group>
 
       <Button
-        component={Link}
-        to={`${ROUTES.TASKDETAILSPAGE}/${task.id}`}
-        variant="light"
-        color="blue"
-        fullWidth
-        mt="auto"
-      >
-        Редактировать
-      </Button>
-
-      <Button
-        mt={"sm"}
+        mt={"auto"}
         color="red"
         variant="light"
         fullWidth
