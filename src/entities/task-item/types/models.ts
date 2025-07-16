@@ -29,6 +29,7 @@ export type FilterType = keyof TaskFilters;
 export interface TaskState {
   tasks: Task[];
   addTask: (task: Task) => void;
+  deleteTask: (id: string) => void;
   getTask: (id: string) => Task | undefined;
   updateTask: (id: string, values: TaskFormValues) => void;
   filters: TaskFilters;

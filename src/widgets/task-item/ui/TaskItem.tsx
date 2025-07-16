@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Text, Group, Badge, Button } from "@mantine/core";
 import { Link } from "react-router-dom";
-import type { Task } from "@entities/task-item";
+import { useTasksStore, type Task } from "@entities/task-item";
 import { ROUTES } from "@app/router";
 
 const categoryColors = {
@@ -19,6 +19,12 @@ const priorityColors = {
 };
 
 export const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
+  const deleteTask = useTasksStore((state) => state.deleteTask);
+
+  const handleDeleteTask = () => {
+    deleteTask(task.id);
+  };
+
   return (
     <Card shadow="sm" p="lg" radius="md" withBorder>
       <Text size="lg" mb="xs">
@@ -48,6 +54,16 @@ export const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
         mt="auto"
       >
         Редактировать
+      </Button>
+
+      <Button
+        mt={"sm"}
+        color="red"
+        variant="light"
+        fullWidth
+        onClick={handleDeleteTask}
+      >
+        Удалить
       </Button>
     </Card>
   );

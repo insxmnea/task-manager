@@ -108,6 +108,12 @@ export const useTasksStore = create<TaskState>()(
         set((state) => ({ tasks: [...state.tasks, task] }));
       },
 
+      deleteTask: (id) => {
+        set((state) => ({
+          tasks: state.tasks.filter((task) => task.id !== id),
+        }));
+      },
+
       setFilters: (values, type) => {
         set((state) => ({ filters: { ...state.filters, [type]: values } }));
       },
