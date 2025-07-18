@@ -13,7 +13,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Bug",
           status: "To Do",
           priority: "High",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "2",
@@ -22,7 +22,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Feature",
           status: "In Progress",
           priority: "Medium",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "3",
@@ -31,7 +31,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Documentation",
           status: "Done",
           priority: "Low",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "4",
@@ -40,7 +40,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Refactor",
           status: "In Progress",
           priority: "High",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "5",
@@ -49,7 +49,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Test",
           status: "To Do",
           priority: "Medium",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "6",
@@ -58,7 +58,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Bug",
           status: "To Do",
           priority: "High",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "7",
@@ -67,7 +67,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Feature",
           status: "In Progress",
           priority: "Low",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "8",
@@ -76,7 +76,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Documentation",
           status: "Done",
           priority: "Medium",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "9",
@@ -85,7 +85,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Refactor",
           status: "To Do",
           priority: "Medium",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
         {
           id: "10",
@@ -94,7 +94,7 @@ export const useTasksStore = create<TaskState>()(
           category: "Test",
           status: "In Progress",
           priority: "High",
-          dateOfCreation: new Date(2025, 7, 8),
+          dateOfCreation: new Date(),
         },
       ],
 
