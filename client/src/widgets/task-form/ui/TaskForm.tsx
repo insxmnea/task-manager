@@ -1,6 +1,7 @@
 import { ROUTES } from "@app/router";
 import {
-  useTasksStore,
+  useCreateTask,
+  useUpdateTask,
   type Task,
   type TaskFormValues,
 } from "@entities/task-item";
@@ -15,9 +16,8 @@ interface Props {
 export const TaskForm = (props: Props) => {
   const navigate = useNavigate();
 
-  const createTask = useTasksStore((state) => state.createTask);
-  const updateTask = useTasksStore((state) => state.updateTask);
-  const deleteTask = useTasksStore((state) => state.deleteTask);
+  const createMutation = useCreateTask();
+  const updateMutation = useUpdateTask();
 
   const form = useForm<TaskFormValues>({
     initialValues: {
@@ -35,18 +35,11 @@ export const TaskForm = (props: Props) => {
 
   const handleSubmit = (values: TaskFormValues) => {
     if (props.task) {
-      updateTask(props.task.id, values);
+      updateMutation.mutate({ id: props.task.id, data: values });
     } else {
-      createTask(values);
+      createMutation.mutate(values);
     }
     navigate(ROUTES.HOMEPAGE);
-  };
-
-  const handleDeleteTask = () => {
-    if (props.task) {
-      deleteTask(props.task.id);
-      navigate(ROUTES.HOMEPAGE);
-    }
   };
 
   return (
@@ -112,12 +105,6 @@ export const TaskForm = (props: Props) => {
           <Button type="submit" color="blue">
             Сохранить
           </Button>
-
-          {props.task && (
-            <Button onClick={handleDeleteTask} color="red">
-              Удалить
-            </Button>
-          )}
         </Group>
       </Group>
     </form>

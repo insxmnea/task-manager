@@ -6,4 +6,13 @@ export type {
   TaskFormValues,
 } from "./types/models";
 
-export { useTasksStore } from "./model/useTasksStore";
+export { TasksAPI } from "./model/TasksAPI";
+
+export {
+  taskKeys,
+  useCreateTask,
+  useDeleteTask,
+  useTask,
+  useTasks,
+  useUpdateTask,
+} from "./model/useTasks";

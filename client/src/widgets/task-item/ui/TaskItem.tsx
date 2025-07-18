@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Text, Group, Badge, Button } from "@mantine/core";
 import { Link } from "react-router-dom";
-import { useTasksStore, type Task } from "@entities/task-item";
+import { useDeleteTask, type Task } from "@entities/task-item";
 import { ROUTES } from "@app/router";
 import styles from "./TaskItem.module.css";
 import { TaskCreationDate } from "@shared/ui/task-creation-date";
@@ -25,13 +25,13 @@ interface Props {
 }
 
 export const TaskItem = ({ task }: Props) => {
-  const deleteTask = useTasksStore((state) => state.deleteTask);
+  const deleteMutation = useDeleteTask();
 
   const handleDeleteTask = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    deleteTask(task.id);
+    deleteMutation.mutate(task.id);
   };
 
   return (

@@ -1,5 +1,5 @@
+import { useFiltersStore } from "@entities/filters";
 import {
-  useTasksStore,
   type TaskCategory,
   type TaskPriority,
   type TaskStatus,
@@ -27,9 +27,9 @@ const priorityOptions = [
 ];
 
 export const Filters = () => {
-  const filters = useTasksStore((state) => state.filters);
-  const setFilters = useTasksStore((state) => state.setFilters);
-  const resetFilters = useTasksStore((state) => state.resetFilters);
+  const filters = useFiltersStore((state) => state.filters);
+  const setFilters = useFiltersStore((state) => state.setFilters);
+  const resetFilters = useFiltersStore((state) => state.resetFilters);
 
   const handleStatusChange = (values: string[]) => {
     setFilters(values as TaskStatus[], "statuses");

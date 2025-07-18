@@ -16,5 +16,3 @@ export interface Task {
   priority: TaskPriority;
   dateOfCreation: Date;
 }
-
-export type TaskFormValues = Omit<Task, "id" | "dateOfCreation">;

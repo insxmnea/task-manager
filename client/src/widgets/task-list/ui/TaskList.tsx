@@ -2,13 +2,14 @@ import { useMemo } from "react";
 import { SimpleGrid, Title, Container, Text } from "@mantine/core";
 import { TaskItem } from "@widgets/task-item";
 import { Filters } from "@widgets/filters";
-import { useTasksStore } from "@entities/task-item";
+import { useTasks } from "@entities/task-item";
+import { useFiltersStore } from "@entities/filters";
 
 export const TaskList = () => {
-  const tasks = useTasksStore((state) => state.tasks);
-  const filters = useTasksStore((state) => state.filters);
+  const { data: tasks } = useTasks();
+  const filters = useFiltersStore((state) => state.filters);
 
-  const filteredTasks = tasks.filter((task) => {
+  const filteredTasks = tasks?.filter((task) => {
     const statuses = filters.statuses;
     if (statuses.length > 0 && !statuses.includes(task.status)) {
       return false;
@@ -30,7 +31,7 @@ export const TaskList = () => {
   const tasksGrid = useMemo(
     () => (
       <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
-        {filteredTasks.map((task) => (
+        {filteredTasks?.map((task) => (
           <TaskItem key={task.id} task={task} />
         ))}
       </SimpleGrid>
@@ -46,7 +47,7 @@ export const TaskList = () => {
 
       <Filters />
 
-      {filteredTasks.length === 0 ? (
+      {filteredTasks?.length === 0 ? (
         <Text mt="xl" size="lg">
           Задачи не найдены.
         </Text>
